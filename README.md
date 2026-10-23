@@ -1,5 +1,3 @@
-# NetShield-DNS-Guard
-A system-level Windows networking and cybersecurity utility that prevents ISP transparent DNS hijacking, disables IPv6 leaks, and dynamically enforces proxy-aligned encrypted DNS resolution.
 # 🛡️ NetShield: Dynamic DNS-Leak Guard & Proxy Enforcer
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
@@ -32,30 +30,41 @@ Standard proxy tools and residential VPNs often operate purely at the applicatio
 
 ---
 
-## 🏗️ System Architecture & Workflow
+## 📊 Verification & Benchmark Results
 
-```text
-[User Activates Residential Proxy/VPN]
-               │
-               ▼
-   ┌───────────────────────┐
-   │   NetShield Engine    │ ──► 1. Scans Outbound Tunnel IP, ASN & Geo-Location
-   └───────────────────────┘
-               │
-               ├──► 2. Disables Windows SMHNR & IPv6 Adapter Bindings
-               │
-               ├──► 3. Injects Firewall Rules (Blocks Local ISP Port 53 Hijacking)
-               │
-               ▼
-[Enforces Geo-Matched Encrypted DNS Across All OS Adapters]
-               │
-               ▼
-   ✅ 100% Anonymity Score (Zero DNS / WebRTC / ISP Leaks)
+Tested against industry-standard network fingerprinting and anti-fraud suites (`Whoer`, `IPInfo`, `Scamalytics`):
 
-📊 Verification & Benchmark ResultsTested against industry-standard network fingerprinting and anti-fraud suites (Whoer, IPInfo, Scamalytics):MetricBefore NetShield (Default OS + Proxy)After NetShield ActivationOutbound ISP TypeResidential (Virgin Media / TalkTalk UK)Residential (TalkTalk UK)OS DNS Resolution❌ Leaking Local ISP DNS (-30% Penalty)✅ 100% Geo-Matched UK DNSAnonymizer / BlacklistNoNo (Clean Residential Footprint)Overall Disguise Score70% (Moderate Risk - Location Exposed)100% (Zero Leaks Detected)🚀 Getting StartedPrerequisitesOS: Windows 10 or Windows 11Python: 3.9+Privileges: Requires Administrator privileges to modify network adapter bindings and Windows Firewall rules.InstallationClone the repository:Bashgit clone [https://github.com/YOUR-USERNAME/NetShield-DNS-Guard.git](https://github.com/YOUR-USERNAME/NetShield-DNS-Guard.git)
-cd NetShield-DNS-Guard
-Install dependencies:Bashpip install -r requirements.txt
-Run the Application (as Administrator):Right-click run_shield.bat and select Run as administrator, or run via elevated terminal:Bashpython main.py
-🛠️ Tech Stack & System APIs UsedLanguage: Python 3GUI Framework: Tkinter / CustomTkinterSystem & Networking APIs:Windows Management Instrumentation (WMI) & PowerShell Cmdletsnetsh (Network Shell for Interface IPv4/DNS & AdvFirewall automation)Windows Registry API (winreg for disabling SmartNameResolution)REST APIs for Real-Time ASN, ISP, and Geolocation Fingerprinting⚠️ DisclaimerThis tool was developed for educational purposes, network security research, privacy protection, and authorized testing of geo-targeted applications. Users are responsible for complying with applicable local laws and terms of service.👨‍💻 AuthorDeveloped by Ali — Software Developer & Automation Enthusiast
+| Metric | Before NetShield (Default OS + Proxy) | After NetShield Activation |
+| :--- | :--- | :--- |
+| **Outbound ISP Type** | Residential (Virgin Media / TalkTalk UK) | Residential (TalkTalk UK) |
+| **OS DNS Resolution** | ❌ Leaking Local ISP DNS (-30% Penalty) | ✅ 100% Geo-Matched UK DNS |
+| **Anonymizer / Blacklist** | No | No (Clean Residential Footprint) |
+| **Overall Disguise Score** | **70% (Moderate Risk - Location Exposed)** | **100% (Zero Leaks Detected)** |
 
-📊 Verification & Benchmark ResultsTested against industry-standard network fingerprinting and anti-fraud suites (Whoer, IPInfo, Scamalytics):MetricBefore NetShield (Default OS + Proxy)After NetShield ActivationOutbound ISP TypeResidential (Virgin Media / TalkTalk UK)Residential (TalkTalk UK)OS DNS Resolution❌ Leaking Local ISP DNS (-30% Penalty)✅ 100% Geo-Matched UK DNSAnonymizer / BlacklistNoNo (Clean Residential Footprint)Overall Disguise Score70% (Moderate Risk - Location Exposed)100% (Zero Leaks Detected)🚀 Getting StartedPrerequisitesOS: Windows 10 or Windows 11Python: 3.9+Privileges: Requires Administrator privileges to modify network adapter bindings and Windows Firewall rules.InstallationClone the repository:
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+* **OS:** Windows 10 or Windows 11
+* **Python:** 3.9+
+* **Privileges:** Requires **Administrator** privileges to modify network adapter bindings and Windows Firewall rules.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/builtbyali27/NetShield-DNS-Guard.git
+   cd NetShield-DNS-Guard
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Launch NetShield (as Administrator):**
+   Double-click `run_shield.bat` or execute from an elevated terminal:
+   ```bash
+   python main.py
+   ```
